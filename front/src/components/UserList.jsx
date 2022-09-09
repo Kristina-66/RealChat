@@ -9,7 +9,7 @@ function UserList({ handleChatChange }) {
 
   useEffect(() => {
     async function getAllUsers() {
-      const data = await axios.get("http://localhost:5000/api/auth/allusers");
+      const data = await axios.get("https://realchat66.herokuapp.com/api/auth/allusers");
       const users = data.data;
       setUsers(users);
     }
