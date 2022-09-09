@@ -36,7 +36,7 @@ const server = app.listen(process.env.PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: "http://localhost:5000",
+    origin: "https://realchat66.herokuapp.com",
     credentials: true,
   },
 });
