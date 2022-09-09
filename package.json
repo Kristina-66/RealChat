@@ -1,0 +1,22 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "api": "cd server && nodemon app.js",
+    "heroku-postbuild": "cd front && npm install && npm run build && cd ../server && npm i "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Melancholia66/RealChat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Melancholia66/RealChat/issues"
+  },
+  "homepage": "https://github.com/Melancholia66/RealChat#readme"
+}

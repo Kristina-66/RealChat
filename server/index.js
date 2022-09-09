@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const socket = require("socket.io");
+const path = require("path");
 
 const app = express();
 
@@ -23,8 +24,12 @@ mongoose
     console.log(err.message);
   });
 
+app.use(express.static(path.join(__dirname, "../front/build")));
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/../frontend/build/index.html"));
+});
 
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
