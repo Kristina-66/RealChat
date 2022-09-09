@@ -34,6 +34,7 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
+//cors
 const io = socket(server, {
   cors: {
     origin: config.get("origin"),
