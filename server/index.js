@@ -9,7 +9,12 @@ const path = require("path");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    credentials: false,
+  })
+);
 app.use(express.json());
 
 mongoose
@@ -36,8 +41,8 @@ const server = app.listen(process.env.PORT, () =>
 );
 const io = socket(server, {
   cors: {
-    origin: "https://realchat66.herokuapp.com/",
-    credentials: true,
+    origin: "*",
+    credentials: false,
   },
 });
 
