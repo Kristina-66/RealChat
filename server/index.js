@@ -29,12 +29,12 @@ mongoose
     console.log(err.message);
   });
 
+app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
 app.use(express.static(path.join(__dirname, "../front/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../front/build/index.html"));
 });
-app.use("/api/auth", authRoutes);
-app.use("/api/messages", messageRoutes);
 
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
