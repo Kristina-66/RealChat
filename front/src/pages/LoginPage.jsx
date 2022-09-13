@@ -44,7 +44,7 @@ function LoginPage() {
           textAlign="center"
           component="h1"
           sx={{
-            color: "#2cd6deb8",
+            color: "#f3656d",
             fontWeight: 600,
             fontSize: { xs: "2rem", md: "3rem" },
             mb: 2,
@@ -85,9 +85,9 @@ function LoginPage() {
             variant="contained"
             sx={{
               mt: 1,
-              backgroundColor: "#25b2b9",
+              backgroundColor: "#f3656d",
               "&:hover": {
-                backgroundColor: "#176d72",
+                backgroundColor: "#cf2b35",
               },
             }}
             fullWidth

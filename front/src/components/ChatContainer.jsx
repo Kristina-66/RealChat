@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 import axios from "axios";
 import {
@@ -8,7 +9,9 @@ import {
   List,
   Typography,
   Collapse,
+  Box,
 } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 import { sendMessageRoute, recieveMessageRoute } from "../utils/APIRoutes";
 import ChatInput from "./ChatInput";
 import Logout from "./Logout";
@@ -27,7 +30,7 @@ function ChatContainer({ currentChat, socket }) {
     async function getMessages() {
       const response = await axios.post(recieveMessageRoute, {
         from: user,
-        to: currentChat,
+        to: currentChat.userId,
       });
       setMessages(response.data);
     }
@@ -46,13 +49,13 @@ function ChatContainer({ currentChat, socket }) {
   const handleSendMsg = async (msg) => {
     const user = localStorage.getItem("userId");
     socket.current.emit("send-msg", {
-      to: currentChat,
+      to: currentChat.userId,
       from: user,
       msg,
     });
     await axios.post(sendMessageRoute, {
       from: user,
-      to: currentChat,
+      to: currentChat.userId,
       message: msg,
     });
 
@@ -74,6 +77,8 @@ function ChatContainer({ currentChat, socket }) {
   }, [arrivalMessage]);
   console.log(messages);
 
+  console.log(currentChat);
+
   return (
     <>
       <List
@@ -81,24 +86,48 @@ function ChatContainer({ currentChat, socket }) {
           height: "70vh",
           overflowY: "auto",
           width: "100%",
-          bgcolor: "background.paper",
+          backgroundColor: "#136164",
           position: "relative",
           "&::-webkit-scrollbar": {
             width: "0.8rem",
             "&-thumb": {
-              backgroundColor: "#25b2b9",
+              backgroundColor: "#fffddbf7",
               width: "2rem",
               borderRadius: "2rem",
             },
           },
         }}
       >
-        <Logout />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            p: "0 2rem",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              gap: "1rem",
+              alignItems: "center",
+              p: "0 2rem",
+              backgroundColor: "#f3656d",
+              borderRadius: "1rem",
+            }}
+          >
+            <PersonIcon fontSize="large" sx={{ color: "#f8f8d7" }} />
+            <Typography sx={{ color: "#f8f8d7" }}>
+              {currentChat.userName}
+            </Typography>
+          </Box>
+          <Logout />
+        </Box>
         {messages.length === 0 && (
           <Typography
             variant="h4"
             sx={{
-              color: "#136164",
+              color: "#f3656d",
               display: "flex",
               justifyContent: "center",
               mt: "200px",
@@ -117,7 +146,7 @@ function ChatContainer({ currentChat, socket }) {
                     item
                     xs={12}
                     sx={{
-                      backgroundColor: "#ededed",
+                      backgroundColor: "#f8f8d7",
                       maxWidth: "40%",
                       overflowWrap: "break-word",
                       padding: "1rem",
@@ -128,14 +157,14 @@ function ChatContainer({ currentChat, socket }) {
                     <ListItemText
                       align={message.fromSelf ? "right" : "left"}
                       primary={message.message.title}
-                      sx={{ color: "#136164" }}
+                      sx={{ color: "#136164", cursor: "pointer" }}
                       onClick={handleClick}
                     ></ListItemText>
                     <Collapse in={open} timeout="auto" unmountOnExit>
                       <ListItemText
                         align={message.fromSelf ? "right" : "left"}
                         primary={message.message.text}
-                        sx={{ color: "gray", fontSize: "19px" }}
+                        sx={{ color: "#f3656d", fontSize: "19px" }}
                       ></ListItemText>
                     </Collapse>
                   </Grid>

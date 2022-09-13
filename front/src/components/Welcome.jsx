@@ -17,7 +17,6 @@ function Welcome() {
     >
       <Box
         sx={{
-          backgroundColor: "#136164",
           mt: 2,
         }}
       >
@@ -26,14 +25,14 @@ function Welcome() {
       <Typography
         variant="h4"
         sx={{
-          color: "#136164",
+          color: "#fffddbf7",
         }}
       >
         Welcome, {userName}!
       </Typography>
       <Typography
         sx={{
-          color: "#136164",
+          color: "#fffddbf7",
         }}
         variant="h6"
       >

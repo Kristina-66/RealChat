@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { io } from "socket.io-client";
 import {
-  Paper,
   Grid,
-  ListItemText,
   ListItemIcon,
   ListItem,
   List,
@@ -13,30 +11,13 @@ import {
   Divider,
   Container,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { host } from "../utils/APIRoutes";
 import UserList from "../components/UserList";
 import ChatContainer from "../components/ChatContainer";
 import Welcome from "../components/Welcome";
 
-const useStyles = styled({
-  table: {
-    minWidth: 650,
-  },
-  chatSection: {
-    width: "100%",
-    height: "80vh",
-  },
-  headBG: {
-    backgroundColor: "#e0e0e0",
-  },
-  borderRight500: {
-    borderRight: "1px solid #e0e0e0",
-  },
-});
 const Chat = () => {
-  const classes = useStyles();
   const [currentChat, setCurrentChat] = useState(undefined);
   const socket = useRef();
   const navigate = useNavigate();
@@ -69,10 +50,9 @@ const Chat = () => {
             variant="h5"
             className="header-message"
             sx={{
-              color: "#2cd6ded4",
+              color: "#fffddbf7",
               fontWeight: 600,
               fontSize: { md: "2rem" },
-
               letterSpacing: 1,
             }}
           >
@@ -80,14 +60,20 @@ const Chat = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container component={Paper} className={classes.chatSection}>
-        <Grid item xs={3} className={classes.borderRight500}>
-          <List>
+      <Grid container sx={{ backgroundColor: "#092c2d" }}>
+        <Grid item xs={3}>
+          <List sx={{ backgroundColor: "#092c2d" }}>
             <ListItem button>
               <ListItemIcon>
-                <AccountCircleIcon fontSize="large" />
+                <AccountCircleIcon
+                  fontSize="large"
+                  sx={{ color: "#fffddbf7" }}
+                />
               </ListItemIcon>
-              <ListItemText primary={userName}></ListItemText>
+              <Typography variant="h6" sx={{ color: "#fffddbf7" }}>
+                {" "}
+                {userName}
+              </Typography>
             </ListItem>
           </List>
           <Divider />

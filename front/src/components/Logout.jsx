@@ -23,12 +23,12 @@ function Welcome() {
       sx={{
         padding: "0.5rem",
         borderRadius: "0.5rem",
-        backgroundColor: "#25b2b9",
+        backgroundColor: "#f3656d",
         color: "white",
         border: "none",
         cursor: "pointer",
         "&:hover": {
-          backgroundColor: "#176d72",
+          backgroundColor: "#cf2b35",
         },
       }}
     >

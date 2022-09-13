@@ -17,7 +17,7 @@ function ChatInput({ handleSendMsg }) {
   };
 
   return (
-    <Grid container sx={{ padding: "20px" }}>
+    <Grid container sx={{ padding: "20px", backgroundColor: "#136164" }}>
       <Grid item xs={11}>
         <TextField
           size="small"
@@ -25,14 +25,14 @@ function ChatInput({ handleSendMsg }) {
           fullWidth
           value={theme}
           onChange={(e) => setTheme(e.target.value)}
+          sx={{ backgroundColor: "#fffddbf7" }}
         />
         <TextField
-          
           id="outlined-basic-email"
           label="Text messege"
           fullWidth
           value={msg}
-          sx={{ mt: "7px" }}
+          sx={{ mt: "7px", backgroundColor: "#fffddbf7" }}
           onChange={(e) => setMsg(e.target.value)}
         />
       </Grid>
@@ -45,13 +45,13 @@ function ChatInput({ handleSendMsg }) {
           aria-label="add"
           sx={{
             mt: 6,
-            backgroundColor: "#25b2b9",
+            backgroundColor: "#f3656d",
             "&:hover": {
-              backgroundColor: "#176d72",
+              backgroundColor: "#cf2b35",
             },
           }}
         >
-          <SendIcon />
+          <SendIcon sx={{ color: "#fffddbf7" }} />
         </Fab>
       </Grid>
     </Grid>
