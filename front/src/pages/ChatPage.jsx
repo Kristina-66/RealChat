@@ -42,7 +42,7 @@ const Chat = () => {
   return (
     <Container
       maxWidth={false}
-      sx={{ backgroundColor: "#000000", height: "100vh" }}
+      sx={{ backgroundColor: "#000000", minHeight: "100vh" }}
     >
       <Grid container>
         <Grid item xs={12}>

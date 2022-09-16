@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
-import {
-  ListItemIcon,
-  ListItem,
-  List,
-  Box,
-  Typography,
-} from "@mui/material";
+import { ListItemIcon, ListItem, List, Box, Typography } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
+import Notifications from "./Notifications";
 
 function UserList({ handleChatChange }) {
   const [users, setUsers] = useState([]);
@@ -23,8 +18,6 @@ function UserList({ handleChatChange }) {
     }
     getAllUsers();
   }, []);
-
-  console.log(users);
 
   return (
     <List
@@ -76,6 +69,17 @@ function UserList({ handleChatChange }) {
                   <PersonIcon fontSize="large" sx={{ color: "#fffddbf7" }} />
                 </ListItemIcon>
                 <Typography variant="h6"> {user.username}</Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    width: "100%",
+                    
+                  }}
+                >
+                  {" "}
+                  <Notifications />
+                </Box>
               </Box>
             </ListItem>
           );
