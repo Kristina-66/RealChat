@@ -6,6 +6,11 @@ const MessageSchema = mongoose.Schema(
       title: { type: String, required: true },
       text: { type: String, required: true },
     },
+    read: {
+      type: Boolean,
+      default: false,
+    },
+  
     users: Array,
     sender: {
       type: mongoose.Schema.Types.ObjectId,
